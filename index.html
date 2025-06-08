@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio of Kuntal Das, an aspiring software developer specializing in front-end technologies.">
+    <meta name="keywords" content="Kuntal Das, portfolio, software developer, front-end, web development">
+    <title>Kuntal Das - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: #f4f7fa;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        body.dark-mode {
+            background: #000000;
+            color: #e0e6ed;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s;
+        }
+
+        nav.dark-mode {
+            background: #000000;
+            box-shadow: 0 2px 5px rgba(255, 255, 255, 0.05);
+        }
+
+        nav .logo {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #007bff;
+        }
+
+        nav.dark-mode .logo {
+            color: #0062cc;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        nav.dark-mode ul li a {
+            color: #e0e6ed;
+        }
+
+        nav ul li a:hover {
+            color: #007bff;
+            transform: translateY(-2px);
+        }
+
+        nav.dark-mode ul li a:hover {
+            color: #0097d7;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            font-size: 1.3rem;
+            cursor: pointer;
+            color: #333;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .dark-mode .theme-toggle {
+            color: #e0e6ed;
+        }
+
+        .theme-toggle:hover {
+            transform: rotate(20deg);
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #333;
+        }
+
+        .dark-mode .hamburger {
+            color: #e0e6ed;
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #007bff, #00c4ff);
+            color: #fff;
+            text-align: center;
+            padding: 0 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: background 0.3s;
+        }
+
+        .dark-mode .hero {
+            background: linear-gradient(135deg, rgb(3, 3, 170), #0097d7);
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 0.2s;
+            animation-fill-mode: backwards;
+        }
+
+        .hero-content .btn {
+            padding: 0.9rem 2.5rem;
+            background: #fff;
+            color: #007bff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: background 0.3s, color 0.3s, transform 0.3s;
+            animation: fadeInUp 1s ease-out 0.4s;
+            animation-fill-mode: backwards;
+        }
+
+        .dark-mode .hero-content .btn {
+            background: #000000;
+            color: #0062cc;
+        }
+
+        .hero-content .btn:hover {
+            background: rgb(3, 3, 170);
+            color: #fff;
+            transform: translateY(-3px);
+        }
+
+        .dark-mode .hero-content .btn:hover {
+            background: #0062cc;
+            color: #e0e6ed;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section h2 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 2.5rem;
+            text-align: center;
+            color: #007bff;
+        }
+
+        .dark-mode section h2 {
+            color: #0062cc;
+        }
+
+        .about-content {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+            background: #fff;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: background 0.3s;
+        }
+
+        .dark-mode .about-content {
+            background: rgb(3, 3, 170);
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.05);
+        }
+
+        .about-content img {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            object-fit: cover;
+            loading: lazy;
+        }
+
+        .about-content p {
+            flex: 1;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1.5rem;
+            text-align: center;
+        }
+
+        .skill-card {
+            background: #e6f0ff;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .dark-mode .skill-card {
+            background: #1a2a4d;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.05);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .dark-mode .skill-card:hover {
+            box-shadow: 0 8px 20px rgba(255, 255, 255, 0.1);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            position: relative;
+            background: #e6f0ff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+        }
+
+        .dark-mode .project-card {
+            background: #1a2a4d;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.05);
+        }
+
+        .project-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .dark-mode .project-card:hover {
+            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.1);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.5s ease-in-out, opacity 0.4s ease-in-out;
+            loading: lazy;
+        }
+
+        .project-card:hover img {
+            transform: scale(1.1);
+            opacity: 0.85;
+        }
+
+        .project-card .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 123, 255, 0.7);
+            opacity: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 1.3rem;
+            font-weight: 600;
+            transition: opacity 0.4s ease-in-out;
+        }
+
+        .dark-mode .project-card .overlay {
+            background: rgba(0, 98, 204, 0.7);
+        }
+
+        .project-card:hover .overlay {
+            opacity: 1;
+        }
+
+        .project-card h3 {
+            padding: 1.2rem;
+            font-size: 1.6rem;
+            font-weight: 600;
+        }
+
+        .project-card p {
+            padding: 0 1.2rem 1.2rem;
+            font-size: 1rem;
+            color: #333;
+        }
+
+        .dark-mode .project-card p {
+            color: #e0e6ed;
+        }
+
+        .project-card a {
+            display: block;
+            padding: 0 1rem 1.2rem;
+            color: #007bff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .dark-mode .project-card a {
+            color: #0062cc;
+        }
+
+        .project-card a:hover {
+            color: #0056b3;
+        }
+
+        .dark-mode .project-card a:hover {
+            color: #004085;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s;
+        }
+
+        .dark-mode .contact-form {
+            background: #000000;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.05);
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 0.9rem;
+            margin-bottom: 1.2rem;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 1rem;
+            color: #333;
+            background: #fff;
+            transition: border 0.3s, background-color 0.3s;
+        }
+
+        .dark-mode .contact-form input,
+        .dark-mode .contact-form textarea {
+            background: #1e2529;
+            border: 1px solid #adb5bd;
+            color: #e0e6ed;
+        }
+
+        .contact-form textarea {
+            min-height: 150px;
+        }
+
+        .contact-form button {
+            padding: 0.9rem 2.5rem;
+            background: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: background 0.3s, transform 0.3s;
+            width: 100%;
+        }
+
+        .dark-mode .contact-form button {
+            background: #0062cc;
+        }
+
+        .contact-form button:hover {
+            background: #0056b3;
+            transform: translateY(-3px);
+        }
+
+        .dark-mode .contact-form button:hover {
+            background: #004085;
+        }
+
+        .chat-bubble {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: #007bff;
+            color: #fff;
+            padding: 1rem 1.5rem;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            z-index: 1000;
+            transition: background 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            animation: pulse 2s infinite;
+        }
+
+        .dark-mode .chat-bubble {
+            background: #0062cc;
+        }
+
+        .chat-bubble:hover {
+            background: #0056b3;
+        }
+
+        .dark-mode .chat-bubble:hover {
+            background: #004085;
+        }
+
+        .chat-bubble::before {
+            content: '💬';
+            font-size: 1.2rem;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.08); }
+            100% { transform: scale(1); }
+        }
+
+        .chatbot-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: 1000;
+            justify-content: center;
+            align-items: flex-end;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .chatbot-overlay.active {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .chatbot-container {
+            background: #fff;
+            width: 100%;
+            max-width: 400px;
+            height: 70vh;
+            border-radius: 20px 20px 0 0;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            transition: background 0.3s;
+        }
+
+        .dark-mode .chatbot-container {
+            background: #000000;
+            box-shadow: 0 -4px 15px rgba(255, 255, 255, 0.05);
+        }
+
+        .chatbot-header {
+            background: #007bff;
+            color: #fff;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: background 0.3s;
+        }
+
+        .dark-mode .chatbot-header {
+            background: #0062cc;
+        }
+
+        .chatbot-header img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .chatbot-header h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            flex: 1;
+        }
+
+        .chatbot-close {
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .chatbot-close:hover {
+            transform: rotate(90deg);
+        }
+
+        .chatbot-messages {
+            flex: 1;
+            padding: 1.5rem;
+            overflow-y: auto;
+            background: #fff;
+            transition: background 0.3s;
+        }
+
+        .dark-mode .chatbot-messages {
+            background: #000000;
+        }
+
+        .chatbot-messages .message {
+            margin-bottom: 1rem;
+            padding: 0.8rem 1.2rem;
+            border-radius: 15px;
+            max-width: 80%;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        .chatbot-messages .user {
+            background: #007bff;
+            color: #fff;
+            margin-left: auto;
+            border-bottom-right-radius: 0;
+        }
+
+        .dark-mode .chatbot-messages .user {
+            background: #0062cc;
+        }
+
+        .chatbot-messages .ai {
+            background: #f4f7fa;
+            color: #333;
+            border-bottom-left-radius: 0;
+        }
+
+        .dark-mode .chatbot-messages .ai {
+            background: #1e2529;
+            color: #e0e6ed;
+        }
+
+        .chatbot-messages .typing {
+            background: #f4f7fa;
+            color: #333;
+            border-bottom-left-radius: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.2rem;
+        }
+
+        .dark-mode .chatbot-messages .typing {
+            background: #1e2529;
+            color: #e0e6ed;
+        }
+
+        .typing .dot {
+            width: 6px;
+            height: 6px;
+            background: #333;
+            border-radius: 50%;
+            animation: typingDot 1s infinite;
+        }
+
+        .dark-mode .typing .dot {
+            background: #e0e6ed;
+        }
+
+        .typing .dot:nth-child(2) { animation-delay: 0.2s; }
+        .typing .dot:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes typingDot {
+            0%, 20% { transform: translateY(0); }
+            40% { transform: translateY(-4px); }
+            60% { transform: translateY(0); }
+            80%, 100% { transform: translateY(0); }
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .chatbot-input {
+            display: flex;
+            padding: 1rem;
+            border-top: 1px solid #ddd;
+            transition: border 0.3s;
+        }
+
+        .dark-mode .chatbot-input {
+            border-top: 1px solid #adb5bd;
+        }
+
+        .chatbot-input input {
+            flex: 1;
+            padding: 0.8rem 1.2rem;
+            border: 1px solid #ddd;
+            border-radius: 25px;
+            font-size: 1rem;
+            margin-right: 0.5rem;
+            background: #fff;
+            color: #333;
+            transition: border 0.3s, background 0.3s;
+        }
+
+        .dark-mode .chatbot-input input {
+            background: #1e2529;
+            border: 1px solid #adb5bd;
+            color: #e0e6ed;
+        }
+
+        .chatbot-input button {
+            padding: 0.8rem 1.5rem;
+            background: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .dark-mode .chatbot-input button {
+            background: #0062cc;
+        }
+
+        .chatbot-input button:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        .dark-mode .chatbot-input button:hover {
+            background: #004085;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background: #fff;
+                padding: 1rem;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            }
+
+            .dark-mode nav ul {
+                background: #000000;
+                box-shadow: 0 2px 5px rgba(255, 255, 255, 0.05);
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+
+            .about-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .about-content img {
+                margin-bottom: 1.5rem;
+            }
+
+            .chat-bubble {
+                bottom: 1rem;
+                right: 1rem;
+                font-size: 0.9rem;
+                padding: 0.8rem 1.2rem;
+            }
+
+            .chatbot-container {
+                max-width: 100%;
+                border-radius: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <noscript>
+        <style>
+            .hamburger { display: none; }
+            nav ul { display: flex; }
+        </style>
+        <p>Please enable JavaScript for the best experience.</p>
+    </noscript>
+
+    <nav>
+        <div class="logo">Kuntal Das</div>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><button class="theme-toggle" title="Toggle Theme" aria-label="Toggle dark mode">🌙</button></li>
+        </ul>
+        <div class="hamburger" aria-label="Toggle navigation menu" role="button">☰</div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Hi, I'm Kuntal Das</h1>
+            <p>Aspiring Software Developer & Learner</p>
+            <a href="#contact" class="btn">Get in Touch</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <div class="about-content">
+            <!-- Replace with your actual image URL or local path (e.g., './assets/profile.jpg') -->
+            <img src="https://i.ibb.co/fVS3wy5m/Whats-App-Image-2025-06-08-at-12-08-49-f12d08a6.jpg" alt="Kuntal Das Profile Picture">
+            <p>I'm Kuntal Das, a passionate developer crafting innovative web applications. Learning in front-end technologies, I thrive on building seamless, user-centric designs that make an impact.</p>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2>My Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-card">HTML5</div>
+            <div class="skill-card">CSS3</div>
+            <div class="skill-card">JavaScript</div>
+            <div class="skill-card">Node.js</div>
+            <div class="skill-card">React.js</div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2>My Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <img src="https://cdn.dribbble.com/userupload/13366522/file/original-060124fb479577a90eb14f7e95e0bc6e.png?resize=752x&vertical=center" alt="TaskSync App" loading="lazy">
+                <div class="overlay">View Details</div>
+                <h3>TaskSync App</h3>
+                <p>A real-time collaboration platform built with modern web technologies for seamless team productivity.</p>
+                <a href="https://github.com/kuntaldas/tasksync-app" target="_blank">View Project</a>
+            </div>
+            <div class="project-card">
+                <img src="https://themewagon.com/wp-content/uploads/2020/12/eflyer.jpg" alt="ShopEasy Platform" loading="lazy">
+                <div class="overlay">View Details</div>
+                <h3>ShopEasy Platform</h3>
+                <p>A scalable e-commerce solution powered by modern web frameworks.</p>
+                <a href="https://github.com/kuntaldas/shopeasy-platform" target="_blank">View Project</a>
+            </div>
+            <div class="project-card">
+                <img src="https://uploads.toptal.io/blog/image/129375/toptal-blog-image-1552462722681-dc3d669e1f3aee5be63344f2130977a0.png" alt="DataViz Dashboard" loading="lazy">
+                <div class="overlay">View Details</div>
+                <h3>DataViz Dashboard</h3>
+                <p>An interactive data visualization tool using JavaScript and modern libraries.</p>
+                <a href="https://github.com/kuntaldas/dataviz-dashboard" target="_blank">View Project</a>
+            </div>
+            <div class="project-card">
+                <img src="https://images.examples.com/wp-content/uploads/2017/11/01-11.jpg" alt="Creative Portfolio" loading="lazy">
+                <div class="overlay">View Details</div>
+                <h3>Creative Portfolio</h3>
+                <p>A dynamic portfolio showcasing modern web technologies with HTML, CSS, and JavaScript.</p>
+                <a href="https://github.com/kuntaldas/creative-portfolio" target="_blank">View Project</a>
+            </div>
+            <div class="project-card">
+                <img src="https://th.bing.com/th/id/OIP.nnSeW18u25dS6WeOdmit_wHaDt?rs=1&pid=ImgDetMain" alt="FitTrack Mobile" loading="lazy">
+                <div class="overlay">View Details</div>
+                <h3>FitTrack Mobile</h3>
+                <p>A fitness tracking mobile app built with modern front-end frameworks.</p>
+                <a href="https://github.com/kuntaldas/fittrack-mobile" target="_blank">View Project</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <form id="contact-form" class="contact-form">
+            <input type="text" placeholder="Your Name" name="name" required aria-label="Your Name">
+            <input type="email" placeholder="Your Email" name="email" required aria-label="Your Email">
+            <textarea placeholder="Type your message" name="message" rows="5" required aria-label="Your Message"></textarea>
+            <button type="submit" aria-label="Send Message">Send Message</button>
+        </form>
+    </section>
+
+    <div class="chat-bubble" aria-label="Open chatbot" role="button">Ask anything about me</div>
+
+    <div class="chatbot-overlay">
+        <div class="chatbot-container">
+            <div class="chatbot-header">
+                <!-- Replace with your actual image URL or local path (e.g., './assets/chatbot-icon.jpg') -->
+                <img src="https://as2.ftcdn.net/v2/jpg/05/65/06/85/1000_F_565068563_jSzYovhlcrwcVTOm05akpqVdZXdoOaNE.jpg" alt="Chatbot Icon">
+                <h3>Chat with Kuntal</h3>
+                <span class="chatbot-close" aria-label="Close chatbot" role="button">×</span>
+            </div>
+            <div class="chatbot-messages"></div>
+            <div class="chatbot-input">
+                <input type="text" placeholder="Type your message..." id="chatbot-input" aria-label="Chatbot message input">
+                <button id="chatbot-send" aria-label="Send message">Send</button>
+            </div>
+        </div>
+    </div>
+    <script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyChqejIW6Fl5_BEaxDGJR_vU3tanqpxtng",
+    authDomain: "kuntalportfolio-a86e8.firebaseapp.com",
+    projectId: "kuntalportfolio-a86e8",
+    storageBucket: "kuntalportfolio-a86e8.firebasestorage.app",
+    messagingSenderId: "224524618406",
+    appId: "1:224524618406:web:c4591b02d8cf2fc62a0267",
+    measurementId: "G-BZF0LMH8JR"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
+
+    <script>
+        // Constants
+        const FULL_NAME = 'Kuntal Das';
+        const DESCRIPTIONS = [
+            "I'm Kuntal Das, a 2nd-year B.Tech CSE student at Sister Nivedita University, passionate about creating user-friendly web apps with HTML, CSS, JavaScript, Node.js, and React.js.",
+            "Hi, I'm Kuntal Das, a budding developer skilled in C, Python, and front-end technologies, dedicated to building innovative and impactful web solutions.",
+            "I'm Kuntal Das, an aspiring software engineer from Sister Nivedita University, thriving on crafting seamless web experiences with modern frameworks like React.js.",
+            "Hello, I'm Kuntal Das, a CSE student with a knack for web development, proficient in JavaScript, Node.js, and creating dynamic user interfaces.",
+            "I'm Kuntal Das, a tech enthusiast and 2nd-year B.Tech student, focused on mastering front-end development with tools like HTML, CSS, and React.js."
+        ];
+        const API_KEY = 'AIzaSyA_2_xtzroqgD_rqgH-IDd5qV1mR7eRK5o'; // Replace with a valid key and use server-side proxy for security
+        const API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent';
+
+        // Get random description
+        function getRandomDescription() {
+            return DESCRIPTIONS[Math.floor(Math.random() * DESCRIPTIONS.length)];
+        }
+
+        // Hamburger Menu Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('nav ul');
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        document.querySelectorAll('nav ul li a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    navMenu.classList.remove('active');
+                }
+            });
+        });
+
+        // Smooth Scroll for Nav Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Theme Toggle Button
+        const themeToggle = document.querySelector('.theme-toggle');
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            themeToggle.textContent = isDarkMode ? '☀️' : '🌙';
+            localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+        });
+
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-mode');
+            themeToggle.textContent = '☀️';
+        }
+
+        // Contact Form Validation
+        const contactForm = document.querySelector('#contact-form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const name = contactForm.querySelector('input[name="name"]').value.trim();
+                const email = contactForm.querySelector('input[name="email"]').value.trim();
+                const message = contactForm.querySelector('textarea[name="message"]').value.trim();
+
+                if (!name || !email || !message) {
+                    alert('Please fill out all fields.');
+                    return;
+                }
+
+                if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                    alert('Please enter a valid email address.');
+                    return;
+                }
+
+                alert('Message sent successfully!'); // Replace with actual submission logic
+                contactForm.reset();
+            });
+        } else {
+            console.warn('Contact form not found. Check #contact-form ID.');
+        }
+
+        // Chatbot Functionality
+        const chatBubble = document.querySelector('.chat-bubble');
+        const chatOverlay = document.querySelector('.chatbot-overlay');
+        const chatClose = document.querySelector('.chatbot-close');
+        const chatMessages = document.querySelector('.chatbot-messages');
+        const chatInput = document.querySelector('#chatbot-input');
+        const chatSend = document.querySelector('#chatbot-send');
+
+        if (chatBubble && chatOverlay && chatClose && chatMessages && chatInput && chatSend) {
+            chatBubble.addEventListener('click', () => {
+                chatOverlay.classList.add('active');
+                chatMessages.innerHTML = '';
+                addMessage(`Hi, I am ${FULL_NAME}, what do you want to know about me?`, false);
+            });
+
+            chatClose.addEventListener('click', () => {
+                chatOverlay.classList.remove('active');
+            });
+
+            function addMessage(text, isUser, isTyping = false) {
+                const messageDiv = document.createElement('div');
+                messageDiv.classList.add('message', isUser ? 'user' : isTyping ? 'typing' : 'ai');
+                if (isTyping) {
+                    messageDiv.innerHTML = '<span class="dot"></span><span class="dot"></span><span class="dot"></span>';
+                } else {
+                    messageDiv.textContent = text;
+                }
+                chatMessages.appendChild(messageDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+                return messageDiv;
+            }
+
+            function removeTypingMessage() {
+                const typingMessage = chatMessages.querySelector('.typing');
+                if (typingMessage) {
+                    typingMessage.remove();
+                }
+            }
+
+            async function getAIResponse(message) {
+                // WARNING: Client-side API calls expose the API key. Use a server-side proxy in production.
+                const myDescription = getRandomDescription();
+                try {
+                    const response = await fetch(`${API_URL}?key=${API_KEY}`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            contents: [{
+                                parts: [{
+                                    text: `User_message: ${message}. Reply naturally to the usermessage and if required then answer based on: ${myDescription}. Reply in a way that Kuntal Das is himself talking. Reply in short sentences.`
+                                }]
+                            }]
+                        })
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`API request failed: ${response.status} ${response.statusText}`);
+                    }
+
+                    const data = await response.json();
+                    if (data && data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts && data.candidates[0].content.parts[0]) {
+                        return data.candidates[0].content.parts[0].text;
+                    } else {
+                        throw new Error('Unexpected API response structure');
+                    }
+                } catch (error) {
+                    console.error('Gemini API error:', error.message);
+                    return `Sorry, I couldn't respond right now. ${error.message.includes('401') ? 'The API key may be invalid.' : 'Please try again later.'}`;
+                }
+            }
+
+            async function sendMessage() {
+                const message = chatInput.value.trim();
+                if (message) {
+                    addMessage(message, true);
+                    chatInput.value = '';
+                    const typingMessage = addMessage('', false, true);
+                    const response = await getAIResponse(message);
+                    removeTypingMessage();
+                    addMessage(response, false);
+                }
+            }
+
+            chatSend.addEventListener('click', sendMessage);
+            chatInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    sendMessage();
+                }
+            });
+        } else {
+            console.error('Chatbot elements not found. Check selectors.');
+        }
+
+        // Debug image loading issues
+        document.querySelectorAll('img').forEach(img => {
+            img.addEventListener('error', () => {
+                console.warn(`Failed to load image: ${img.src}`);
+            });
+        });
+    </script>
+</body>
+</html>
